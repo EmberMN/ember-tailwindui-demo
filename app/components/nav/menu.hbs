@@ -25,6 +25,9 @@
       From: "transform opacity-100 scale-100"
       To: "transform opacity-0 scale-95"
   -->
+  {{! TODO: See if there's a way around the "zero height hack" (or similar "position off the screen hack")
+            to avoid skipping transition due to having `display: none` in one of the states.
+  }}
   <div
     {{on "transitionend" this.onTransitionEnd}}
     class={{concat
@@ -34,9 +37,19 @@
     style={{{if (or this.isMenuTransitioning this.isMenuOpen) "" "max-height: 0; overflow: hidden"}}}
   >
     <div class="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
+      {{#each @items as |item|}}
+        <LinkTo
+          {{on "click" this.onMenuItemClick}}
+          @route={{item.route}}
+          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+          role="menuitem"
+        >{{item.text}}</LinkTo>
+      {{/each}}
+{{!--
       <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Your Profile</a>
       <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Settings</a>
       <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Sign out</a>
+--}}
     </div>
   </div>
 </div>

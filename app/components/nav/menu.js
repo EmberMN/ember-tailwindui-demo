@@ -2,15 +2,6 @@ import { tracked } from '@glimmer/tracking';
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 
-/*
-    Entering: "transition ease-out duration-100"
-      From: "transform opacity-0 scale-95"
-      To: "transform opacity-100 scale-100"
-    Leaving: "transition ease-in duration-75"
-      From: "transform opacity-100 scale-100"
-      To: "transform opacity-0 scale-95"
- */
-
 const transitions = {
   entering: 'transition ease-out duration-100',
   leaving: 'transition ease-in duration-75',
@@ -23,10 +14,8 @@ const transforms = {
 
 const displayStates = {
   entering: [transitions.entering, transforms.opaque].join(' '),
-  //shown: ['block', transforms.opaque].join(' '),
   shown: transforms.opaque,
   leaving: [transitions.leaving, transforms.transparent].join(' '),
-  //hidden: ['hidden', transforms.transparent].join(' '),
   hidden: transforms.transparent,
 };
 
@@ -37,31 +26,43 @@ export default class NavMenuComponent extends Component {
   get transitionClasses() {
     if (this.isMenuOpen) {
       if (this.isMenuTransitioning) {
-        //console.log('entering');
         return displayStates.entering;
       }
-      //console.log('shown');
       return displayStates.shown;
     } else if (this.isMenuTransitioning) {
-      //console.log('leaving');
       return displayStates.leaving;
     }
-    //console.log('hidden');
     return displayStates.hidden;
   }
 
   @action
   onTransitionEnd(e) {
-    //console.log('onTransitionEnd');
     if (e.propertyName === 'opacity') {
       this.isMenuTransitioning = false;
     }
   }
 
+  openMenu() {
+    this.isMenuOpen = true;
+    this.isMenuTransitioning = true;
+  }
+
+  closeMenu() {
+    this.isMenuOpen = false;
+    this.isMenuTransitioning = true;
+  }
+
   @action
   onMenuClick() {
-    //console.log('click');
-    this.isMenuOpen = !this.isMenuOpen;
-    this.isMenuTransitioning = true;
+    if (this.isMenuOpen) {
+      this.closeMenu();
+    } else {
+      this.openMenu();
+    }
+  }
+
+  @action
+  onMenuItemClick() {
+    this.closeMenu();
   }
 }

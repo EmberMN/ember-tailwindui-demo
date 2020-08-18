@@ -1,4 +1,7 @@
-<Nav::Main/>
+<Nav::Main
+  @mainItems={{this.navigation.mainItems}}
+  @userMenuItems={{this.navigation.userMenuItems}}
+/>
 <Nav::Header>{{this.router.currentRouteName}}</Nav::Header>
 <main>
   <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
