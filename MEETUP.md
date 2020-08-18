@@ -9,7 +9,7 @@
 ## Agenda
 
 7:00 - 7:15   Welcome
-7:15 - 7:45   TailwindUI talk / demo
+7:15 - 7:45   TailwindUI talk / demo ([follow along](https://github.com/EmberMN/ember-tailwindui-demo/blob/master/DEMO.md#tailwindui--emberjs-demo))
 7:45 - 8:00   TailwindUI Q&A / discussion
 8:00 - 9:00   (Floor open for other demos / discussion -- maybe [Ben](https://github.com/ballPointPenguin)'s project "Radicchio"?)
 
