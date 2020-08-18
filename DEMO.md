@@ -68,18 +68,44 @@ https://vimeo.com/393580241/82c6d7c5f6
 
 The most direct way to get started is to create a new ember application, install ember-cli-postcss, 
 and simply start copying and pasting markup from TWUI into components as you make them with `ember generate component ...`.
-This isn't ideal though, for a few reasons:
+In fact, that is what I did when I started using TWUI for the first time (out of laziness & a need to slap together a demo quickly).
+This isn't ideal though, for a couple reasons:
 
 1. We would like to minimize the amount of "wheel reinventing" and "boilerplate code" we need to write.
    Many components have interactivity, described in the HTML comments but not implemented.
-    
-2.   
+   It is very likely that every time we copy/paste from TWUI we'll need to write some JS to make the thing work right.  
 
-https://cli.emberjs.com/release/writing-addons/in-repo-addons/
+2. If you have custom branding, style guides, etc. then it's likely you'll also have more than one application,
+   and you'll definitely want to be able to share common components amongst them.
+   Unless care is taken, this direct approach will lead to [duplice code](https://en.wikipedia.org/wiki/Duplicate_code), 
+   an enemy of robust, maintainable software.   
+
+The conventional solution to this is to make an [ember addon](https://cli.emberjs.com/release/writing-addons/).
+Indeed, I believe this is probably the best path for this also though I haven't attempted it yet
+(need to think a little more about how to best deal with PostCSS setup and tailwind config first).
+I'm also planning to watch and learn from how the developers at Tailwind Labs go about making React and Vue components.
+Perhaps eventually I and others from the Ember.js community can help get a similar solution in place for TWUI and Ember.
  
-For the purposes of this demo we could just as well make an ember application instead. 
-In fact, that is what I did when I started using TWUI for the first time (out of laziness & a need to slap together a demo quickly).
-However, the 
+For now, let's pretend you're trying to start a small business and want to make a single, smallish app quickly,
+but you hope to grow someday so don't want to [paint yourself into a corner](https://idioms.thefreedictionary.com/paint+into+a+corner).
+It is relatively easy to move Ember.js components from one application or addon to another, and this provides us with some
+justification for not splitting everything out from the get-go. 
+
+Side-note: I'd be curious to hear people's opinions about [monorepos](https://en.wikipedia.org/wiki/Monorepo) in the chat.
+
+* In favor 
+  - https://www.mylittletechlife.com/ember-monorepo (featured in [The Ember Times #138](https://blog.emberjs.com/2020/03/06/the-ember-times-issue-138.html))
+  - https://medium.com/swlh/yarn-workspaces-monorepo-beginners-guide-ed89de47aa25
+* Opposed
+  - https://medium.com/@mattklein123/monorepos-please-dont-e9a279be011b
+* Mixed/Neutral/Other
+  - https://medium.com/@taleodor/using-monorepo-do-not-rebuild-unchanged-components-in-ci-c386e7c03426
+  - https://dev.to/tallyb/six-blind-people-and-a-monorepo-1n49
+  - https://dev.to/patarapolw/monorepo-git-submodules-or-something-else-4l5b
+
+so for better or for worse we can feel OK 
+provides some justification for the decision  allows us to feel OK about having the 
+(or at least gives )  
  
 Note: In case it's not obvious, you can use `npm` instead of [`yarn`](https://classic.yarnpkg.com/lang/en/), if you want.
 I (jacobq) am using `yarn` out of personal preference.
