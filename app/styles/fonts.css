@@ -1,0 +1,12 @@
+/*
+If we import this by resolving directly to `node_modules` like this:
+@import "typeface-inter/Inter (web)/inter.css";
+then the resulting CSS will contain relative URLs that look for the font
+at the wrong URL (/assets/ instead of /assets/fonts/inter/).
+However, since PostCSS doesn't know about the fonts that ember-cli (broccoli)
+will copy to dist/assets/... the postcss-import plugin would throw an error
+when it tries to find the file below (since it runs before the file gets copied there),
+so we configure it to ignore this import using its `filter` option in ember-cli-build.js.
+*/
+@import "fonts/inter/inter.css";
+
