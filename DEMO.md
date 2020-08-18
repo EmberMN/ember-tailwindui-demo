@@ -129,6 +129,14 @@ I (jacobq) am using `yarn` out of personal preference.
    * `ember g component-class nav/mobile`
    * `ember g component nav/menu`
    * `ember g component-class nav/menu`
-   * `ember g component nav/heading`
-
+   * `ember g component nav/header`
+8. Create a controller and service so we can store content there instead of in the components.
+   The point is to extract parts of ember components that doesn't match their responsibilities.
+   We want them to be reusable / general purpose. 
+   e.g. some other app might be getting this content via `fetch` or `ember-data`
+   We'll also add basic debug logging support.
+   * `ember g controller application`
+   * `ember g service local-data`
+   * `yarn add debug`
+9. 
 
