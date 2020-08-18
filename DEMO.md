@@ -138,5 +138,10 @@ I (jacobq) am using `yarn` out of personal preference.
    * `ember g controller application`
    * `ember g service local-data`
    * `yarn add debug`
-9. 
+9. Refactor nav components to take data from outside instead of hard coding.
+   * `ember g route feature`
+   * `ember g route table`
+   * `ember g route settings`
+   * `ember g route sign-out`
+10. 
 

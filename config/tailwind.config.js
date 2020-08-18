@@ -35,7 +35,10 @@ module.exports = {
       },
     },
   },
-  variants: {},
+  // https://tailwindcss.com/docs/pseudo-class-variants#motion-safe-v1-6-0
+  variants: {
+    translate: ['responsive', 'hover', 'focus', 'motion-safe'],
+  },
   plugins: [
     // See https://tailwindui.com/documentation#getting-set-up
     require('@tailwindcss/ui'),
