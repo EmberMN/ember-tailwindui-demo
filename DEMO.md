@@ -121,6 +121,14 @@ I (jacobq) am using `yarn` out of personal preference.
    Create `config/tailwind.config.js`
    (if you prefer, you can locate this somewhere else like `app/tailwind/config.js`)
    and add the TailwindCSS postcss plugin to our list in `postcssOptions` in `ember-cli-build.js`.
-7. ember g component ` 
+7. Take an example "UI Shell" and make refactor it as ember components.
+   We won't worry about making the logic/interactivity work yet, just get markup in appropriate places
+   * `ember g component nav/main`
+   * `ember g component-class nav/main`
+   * `ember g component nav/mobile`
+   * `ember g component-class nav/mobile`
+   * `ember g component nav/menu`
+   * `ember g component-class nav/menu`
+   * `ember g component nav/heading`
 
 
