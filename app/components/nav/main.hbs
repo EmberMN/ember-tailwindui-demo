@@ -11,7 +11,6 @@
         </div>
         <div class="hidden md:block">
           <div class="ml-10 flex items-baseline">
-            {{log @mainItems}}
             {{#each @mainItems as |tab index|}}
               {{#let (eq index 0) (eq tab.route this.router.currentRouteName) as |isFirst isSelected|}}
                 <LinkTo
@@ -21,7 +20,7 @@
                     "px-3 py-2 rounded-md text-sm font-medium "
                     (if isSelected
                       "text-white bg-gray-900 "
-                      "text-gray-300 hover:text-white hover:bg-umnred-darker "
+                      "text-gray-300 hover:text-white hover:bg-gray-700 "
                     )
                   }}
                 >{{tab.text}}</LinkTo>
