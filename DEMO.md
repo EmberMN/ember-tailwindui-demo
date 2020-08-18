@@ -114,9 +114,13 @@ I (jacobq) am using `yarn` out of personal preference.
 2. `cd ember-tailwindui-demo`
 3. `ember install ember-cli-postcss`
 4. `yarn add postcss-import tailwindcss @tailwindcss/ui @tailwindcss/typography typeface-inter`
-5. We need to configure the `postcssOptions` and bring in the "Inter" font
-   If working in an application you would edit `ember-cli-build.js` instead.
-6. Create `app/config/tailwind.config.js` 
+5. We need to configure the `postcssOptions` and bring in the "Inter" font,
+   which we do by editing the `ember-cli-build.js` file.
+   This part gets a little tricky when building an addon instead.
+6. Configure our project to run TailwindCSS processing.
+   Create `config/tailwind.config.js`
+   (if you prefer, you can locate this somewhere else like `app/tailwind/config.js`)
+   and add the TailwindCSS postcss plugin to our list in `postcssOptions` in `ember-cli-build.js`.
 7. ember g component ` 
 
 

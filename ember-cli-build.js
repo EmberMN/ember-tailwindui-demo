@@ -27,6 +27,8 @@ module.exports = function(defaults) {
               }
             },
           },
+          // See https://tailwindcss.com/docs/installation#process-your-css-with-tailwind
+          require('tailwindcss')('./config/tailwind.config.js'),
         ]
       }
     }
