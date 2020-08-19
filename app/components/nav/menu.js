@@ -3,8 +3,8 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 
 const transitions = {
-  entering: 'transition ease-out duration-100',
-  leaving: 'transition ease-in duration-75',
+  entering: 'transition ease-out duration-1000',
+  leaving: 'transition ease-in duration-1000',
 };
 
 const transforms = {

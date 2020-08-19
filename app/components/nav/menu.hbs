@@ -28,28 +28,30 @@
   {{! TODO: See if there's a way around the "zero height hack" (or similar "position off the screen hack")
             to avoid skipping transition due to having `display: none` in one of the states.
   }}
-  <div
-    {{on "transitionend" this.onTransitionEnd}}
-    class={{concat
-      "origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg "
-      this.transitionClasses
-    }}
-    style={{{if (or this.isMenuTransitioning this.isMenuOpen) "" "max-height: 0; overflow: hidden"}}}
-  >
-    <div class="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
-      {{#each @items as |item|}}
-        <LinkTo
-          {{on "click" this.onMenuItemClick}}
-          @route={{item.route}}
-          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-          role="menuitem"
-        >{{item.text}}</LinkTo>
-      {{/each}}
-{{!--
-      <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Your Profile</a>
-      <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Settings</a>
-      <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Sign out</a>
---}}
+  {{! https://github.com/peec/ember-css-transitions }}
+  {{!css-transition "fade"
+                   enterClass="transition ease-out duration-100"
+                   enterActiveClass="transform opacity-0 scale-95"
+                   enterToClass="transform opacity-100 scale-100"
+                   leaveClass="transition ease-in duration-75"
+                   leaveActiveClass="transform opacity-100 scale-100"
+                   leaveToClass="transform opacity-0 scale-95"
+  }}
+  {{!#if this.isMenuOpen}}
+    <div
+      class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg"
+      {{css-transition "fade"}}
+    >
+      <div class="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
+        {{#each @items as |item|}}
+          <LinkTo
+            {{on "click" this.onMenuItemClick}}
+            @route={{item.route}}
+            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+            role="menuitem"
+          >{{item.text}}</LinkTo>
+        {{/each}}
+      </div>
     </div>
-  </div>
+  {{!/if}}
 </div>
